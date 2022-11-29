@@ -15,4 +15,4 @@
 
 ## Screenshots
 
-![TelaToDoList](https://user-images.githubusercontent.com/63020237/204565686-82006428-9541-4dbe-a8d4-64121f289ba1.png)
+![TelaToDoList](https://user-images.githubusercontent.com/63020237/204567245-d14f3287-88b4-43b7-8f5b-89d5dbc77de9.png)
