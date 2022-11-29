@@ -1,0 +1,54 @@
+import { TbClipboardText } from 'react-icons/tb'
+import { ITask } from '../../App'
+import ContentTask from '../ContentTask'
+import styles from './task.module.css'
+
+
+interface Props {
+  tasks: ITask[]
+  onDelete: (taskId: string) => void
+  onComplete: (taskId: string) => void
+}
+
+
+export default function Task({ tasks, onDelete, onComplete }: Props) {
+
+  // Vai Mostrar Quantidade DE Tasks Listada No ToDo
+  const tasksQuantity = tasks.length
+
+  //Vai Buscar Todas As Tarefas Com ISCOMPLETED True / Comcluidas
+  const completedTasks = tasks.filter((task) => task.isCompleted).length
+
+  return (
+    <section className={styles.task}>
+      <header className={styles.header}>
+        <div>
+          <p>Tarefas Criadas</p>
+          <span>{tasksQuantity}</span>
+        </div>
+
+        <div>
+          <p className={styles.textConcluido}>Tarefas Concluidas</p>
+          <span>{completedTasks} / {tasksQuantity}</span>
+        </div>
+      </header>
+
+      <div className={styles.list}>
+        {tasks.map((task) => (
+          <ContentTask key={task.id} task={task} onDelete={onDelete} onComplete={onComplete} />
+        ))}
+
+        {tasks.length <= 0 && (
+          <section className={styles.empty}>
+            <TbClipboardText size={50} />
+            <div>
+              <p>Sem Tarefas</p>
+              <span>Crie Novas Tarefas</span>
+            </div>
+          </section>
+
+        )}
+      </div>
+    </section>
+  )
+}
